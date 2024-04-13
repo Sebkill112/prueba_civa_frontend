@@ -18,7 +18,23 @@ import LastPageIcon from '@mui/icons-material/LastPage';
 import TableHead from '@mui/material/TableHead';
 import CustomLoadingButton from '../../components/Button/LoadingButton';
 import LoupeIcon from '@mui/icons-material/Loupe';
-import { Padding } from '@mui/icons-material';
+import DetalleFutbolista from './detallefutbolista';
+import CustomModal from '../../components/CustomModal/index';
+import { Card } from '@mui/material';
+
+
+const stylesModal = {
+    toolbar: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
+    box: {
+        display: 'flex',
+        alignItems: 'center',
+        pt: '10em'
+    }
+};
 
 function TablePaginationActions(props) {
     const theme = useTheme();
@@ -40,6 +56,11 @@ function TablePaginationActions(props) {
     const handleLastPageButtonClick = (event) => {
         onPageChange(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
     };
+
+
+
+
+  
 
     return (
         <Box sx={{ flexShrink: 0, ml: 2.5 }}>
@@ -88,6 +109,8 @@ export default function TablaFutbolistas(props) {
     const { futbolistas } = props;
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
+    const [dataDetalle, setDataDetalle] = React.useState(null);
+    const [detalle, setDetalle] = React.useState(false);
 
     // Evita un salto de diseño cuando se alcanza la última página con filas vacías.
     const emptyRows =
@@ -102,17 +125,27 @@ export default function TablaFutbolistas(props) {
         setPage(0);
     };
 
+
+ 
+    const handleOpenDetalle = (row) => {
+        setDetalle(true);
+        setDataDetalle(row);
+        console.log(row)
+    };
+    const handleCloseDetalle = () => {
+        setDetalle(false);
+    };
     return (
-        <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 300 }} aria-label="custom pagination table" >
-                <TableHead>
+        <><TableContainer component={Paper}>
+            <Table aria-label="custom pagination table">
+                <TableHead style={{ backgroundColor: '#00b6c2' }}>
                     <TableRow>
-                        <TableCell>Nombres</TableCell>
-                        <TableCell>Apellidos</TableCell>
-                        <TableCell align="right">Fecha de Nacimiento</TableCell>
-                        <TableCell align="right">Características</TableCell>
-                        <TableCell align="right">Posición</TableCell>
-                        <TableCell align="right">Acciones</TableCell>
+                        <TableCell style={{ color: '#fff', fontWeight: 'bold', fontSize: 'large', textAlign: 'center' }}>Nombres</TableCell>
+                        <TableCell style={{ color: '#fff', fontWeight: 'bold', fontSize: 'large', textAlign: 'center' }}>Apellidos</TableCell>
+                        <TableCell style={{ color: '#fff', fontWeight: 'bold', fontSize: 'large', textAlign: 'center' }}>Fecha de Nacimiento</TableCell>
+                        <TableCell style={{ color: '#fff', fontWeight: 'bold', fontSize: 'large', textAlign: 'center' }}>Características</TableCell>
+                        <TableCell style={{ color: '#fff', fontWeight: 'bold', fontSize: 'large', textAlign: 'center' }}>Posición</TableCell>
+                        <TableCell style={{ color: '#fff', fontWeight: 'bold', fontSize: 'large', textAlign: 'center' }}>Acciones</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -121,22 +154,22 @@ export default function TablaFutbolistas(props) {
                         : futbolistas
                     ).map((row) => (
                         <TableRow key={row.id}>
-                            <TableCell component="th" scope="row">
+                            <TableCell component="th" scope="row" style={{ fontSize: 'large', textAlign: 'center' }}>
                                 {row.nombres}
                             </TableCell>
-                            <TableCell component="th" scope="row">
+                            <TableCell component="th" scope="row" style={{ fontSize: 'large', textAlign: 'center' }}>
                                 {row.apellidos}
                             </TableCell>
-                            <TableCell style={{ width: 160 }} align="right">
+                            <TableCell style={{ fontSize: 'large', textAlign: 'center' }}>
                                 {row.fechaNacimiento}
                             </TableCell>
-                            <TableCell style={{ width: 160 }} align="right">
+                            <TableCell style={{ fontSize: 'large', textAlign: 'center' }}>
                                 {row.caracteristicas}
                             </TableCell>
-                            <TableCell style={{ width: 160 }} align="right">
+                            <TableCell style={{ fontSize: 'large', textAlign: 'center' }}>
                                 {row.posicion.nombre}
                             </TableCell>
-                            <TableCell style={{ width: 160 }} align="right">
+                            <TableCell style={{ textAlign: ' -webkit-center' }}>
                                 <CustomLoadingButton
                                     type="submit"
                                     startIcon={<LoupeIcon sx={{ height: '15px' }} />}
@@ -150,8 +183,10 @@ export default function TablaFutbolistas(props) {
                                         height: '28px'
                                     }}
 
+                                    onClick={() => handleOpenDetalle(row)}
+
                                 >
-                                     Detalles
+                                    Detalles
                                 </CustomLoadingButton>
                             </TableCell>
                         </TableRow>
@@ -180,11 +215,31 @@ export default function TablaFutbolistas(props) {
                             }}
                             onPageChange={handleChangePage}
                             onRowsPerPageChange={handleChangeRowsPerPage}
-                            ActionsComponent={TablePaginationActions}
-                        />
+                            ActionsComponent={TablePaginationActions} />
                     </TableRow>
                 </TableFooter>
             </Table>
         </TableContainer>
+        
+        
+        <CustomModal open={detalle} handleClose={handleCloseDetalle} title="Detalles del Futbolista" styles={stylesModal}>
+                <div
+                    style={{
+                        // minWidth: 'calc(80vw)',
+                        display: 'flex',
+                        width: '100%',
+                        height: '100%',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        padding: '0',
+                        margin: '0 auto'
+                    }}
+                >
+                    <Card style={{marginTop:'50px', marginBottom: '50px', padding: '50px'}}>
+                   
+                        <DetalleFutbolista dataFutbolista={dataDetalle}  />
+                        </Card>
+                </div>
+            </CustomModal></>
     );
 }
