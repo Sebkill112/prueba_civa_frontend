@@ -1,11 +1,8 @@
 import React from "react";
 import { Box, Divider, FormControl, Grid, MenuItem, TableHead, TextField, Typography } from "@mui/material";
-import http from "../../http";
-import PropTypes from 'prop-types';
-import CustomLoadingButton from '../../components/Button/LoadingButton';
-import PersonIcon from '@mui/icons-material/Person';
-import Swal from 'sweetalert2';
-import { FlexBox } from "../../components/Containers";
+import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
+import PersonIcon from '@mui/icons-material/Person';import { FlexBox } from "../../components/Containers";
+import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 
 
 export default function DetalleFutbolista(props) {
@@ -54,7 +51,7 @@ export default function DetalleFutbolista(props) {
                             <Grid item xs={12} sm={6} md={4}>
                                 <FormControl sx={{ height: formHeight }} fullWidth>
                                     <FlexBox justifyContent="end" alignItems="center" spacing="8px">
-                                        <PersonIcon color="primary" fontSize="large" />
+                                        <EditCalendarIcon color="primary" fontSize="large" />
                                         <TextField
                                             name="fechaNacimiento"
                                             size="small"
@@ -70,7 +67,7 @@ export default function DetalleFutbolista(props) {
                             <Grid item xs={12} sm={6} md={4}>
                                 <FormControl sx={{ height: formHeight }} fullWidth>
                                     <FlexBox justifyContent="end" alignItems="center" spacing="8px">
-                                        <PersonIcon color="primary" fontSize="large" />
+                                        <SportsSoccerIcon color="primary" fontSize="large" />
                                         <TextField
                                             name="posicion"
                                             size="small"

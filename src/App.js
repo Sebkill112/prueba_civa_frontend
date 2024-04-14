@@ -1,9 +1,14 @@
 import './App.css';
-import { BrowserRouter,Route, Routes } from 'react-router-dom';
+import { BrowserRouter,Route, Routes, Navigate } from 'react-router-dom';
 import LoginPage from './views/login/login';
 import Registro from './views/login/register';
-import InicioPage from './views/Inicio/inicio';
+import Futbolistas from './views/futbolistas/futbolistas';
 
+
+const Private = ({Component}) => {
+  const user = localStorage.getItem("user");  
+  return user ? <Component /> : <Navigate  to="/" />
+}
 
 
 function App() {
@@ -13,7 +18,7 @@ function App() {
         <Routes>
         <Route path="/"  element={<LoginPage/>}  /> 
         <Route path="/registro"  element={<Registro/>}  />   
-        <Route path="/inicio"  element={<InicioPage/>}  />       
+        <Route path="/inicio"  exact element={<Private Component={Futbolistas} />}  />       
         </Routes>
       </BrowserRouter>
   </div>

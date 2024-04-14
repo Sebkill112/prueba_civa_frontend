@@ -9,7 +9,8 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Swal from 'sweetalert2';
 import { useFormik } from 'formik';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
-import MenuBookIcon from '@mui/icons-material/MenuBook';
+import Person2Icon from '@mui/icons-material/Person2';
+import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 
 export default function RegistroFutbolista(props) {
@@ -187,7 +188,7 @@ export default function RegistroFutbolista(props) {
                 <Grid item xs={12} sm={12} md={3.5}>
                     <FormControl sx={{ height: '80px' }} fullWidth>
                         <FlexBox justifyContent="end" alignItems="center" spacing="8px">
-                            <DriveFileRenameOutlineIcon color="primary" fontSize="large" />
+                            <Person2Icon color="primary" fontSize="large" />
                             <TextField
                                 fullWidth
                                 size="medium"
@@ -210,7 +211,7 @@ export default function RegistroFutbolista(props) {
                 <Grid item xs={12} sm={12} md={3.5}>
                     <FormControl sx={{ height: '80px' }} fullWidth>
                         <FlexBox justifyContent="end" alignItems="center" spacing="8px">
-                            <MenuBookIcon color="primary" fontSize="large" />
+                            <Person2Icon color="primary" fontSize="large" />
                             <TextField
                                 fullWidth
                                 size="medium"
@@ -234,7 +235,7 @@ export default function RegistroFutbolista(props) {
                 <Grid item xs={12} sm={12} md={3.5}>
                     <FormControl sx={{ height: '80px' }} fullWidth>
                         <FlexBox justifyContent="end" alignItems="center" spacing="8px">
-                            <DriveFileRenameOutlineIcon color="primary" fontSize="large" />
+                            <EditCalendarIcon color="primary" fontSize="large" />
                             <CustomDatePicker
                                 value={formik.values.fechaNacimiento}
                                 onChange={(newValue) => { formik.setFieldValue('fechaNacimiento', newValue)
@@ -251,7 +252,7 @@ export default function RegistroFutbolista(props) {
                 <Grid item xs={12} sm={12} md={3.5}>
                     <FormControl sx={{ height: '80px' }} fullWidth>
                         <FlexBox justifyContent="end" alignItems="center" spacing="8px">
-                            <ApartmentIcon color="primary" fontSize="large" />
+                            <Person2Icon color="primary" fontSize="large" />
                             <TextField
                                 fullWidth
                                 
@@ -278,7 +279,7 @@ export default function RegistroFutbolista(props) {
                 <Grid item xs={12} sm={12} md={3.5}>
                     <FormControl sx={{ height: '80px' }} fullWidth>
                         <FlexBox justifyContent="end" alignItems="center" spacing="8px">
-                            <EditCalendarIcon color="primary" fontSize="large" />
+                            <SportsSoccerIcon color="primary" fontSize="large" />
                             <TextField
                                 fullWidth
                                 size="medium"

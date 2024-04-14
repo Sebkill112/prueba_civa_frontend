@@ -74,9 +74,8 @@ export default function Futbolistas() {
 
 
     const handleCerrarSesion = () => {
-        // Elimina la cookie de sesión
         removeCookie('jwtToken');
-        // Redirige al usuario a la página de inicio de sesión
+        localStorage.removeItem('user');
         navigate('/');
       };
 
