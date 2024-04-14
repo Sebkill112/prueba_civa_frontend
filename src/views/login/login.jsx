@@ -50,7 +50,13 @@ const LoginPage = () => {
 
         document.cookie = `jwtToken=${data.token}; path=/; ${cookieExpiration};`;
 
-        navigate('/futbolista');
+      
+        if (document.cookie.includes('jwtToken')) {
+          navigate('/inicio');
+        } else {
+          console.error('La cookie jwtToken no se estableció correctamente.');
+        }
+
         // Mensaje de éxito
         Swal.fire({
           icon: 'success',

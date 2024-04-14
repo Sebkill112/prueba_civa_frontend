@@ -7,8 +7,8 @@ import moment from 'moment';
 
 const CustomDatePicker = ({ value, label, size, onChange, name }) => {
     const dateFormatStrValue = (str) => {
-        if (str.length < 10) return null;
-        return moment(str.split('/').reverse().join('-')).format('YYYY-MM-DD');
+        if (!str) return null;
+        return moment(str, 'YYYY-MM-DD', true); // Convertir a un objeto Moment con el formato 'YYYY-MM-DD'
     };
     return (
         <>
@@ -27,7 +27,7 @@ const CustomDatePicker = ({ value, label, size, onChange, name }) => {
                         renderInput={(params) => (
                             <TextField
                                 fullWidth
-                                size="small"
+                                size="medium"
                                 {...{ ...params, error: false }}
                                 name={name}
                                 sx={{

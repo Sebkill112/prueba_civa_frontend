@@ -2,7 +2,8 @@ import './App.css';
 import { BrowserRouter,Route, Routes } from 'react-router-dom';
 import LoginPage from './views/login/login';
 import Registro from './views/login/register';
-import Futbolistas from './views/futbolistas/futbolistas';
+import InicioPage from './views/Inicio/inicio';
+
 
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
         <Routes>
         <Route path="/"  element={<LoginPage/>}  /> 
         <Route path="/registro"  element={<Registro/>}  />   
-        <Route path="/futbolista"  element={<Futbolistas/>}  />       
+        <Route path="/inicio"  element={<InicioPage/>}  />       
         </Routes>
       </BrowserRouter>
   </div>
