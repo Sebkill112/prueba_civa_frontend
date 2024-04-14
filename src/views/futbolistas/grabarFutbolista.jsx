@@ -195,7 +195,7 @@ export default function RegistroFutbolista(props) {
                                 id="nombre"
                                 name="nombre"
                                 type="text"
-                                label="Titulo"
+                                label="Nombres"
                                 value={formik.values.nombre}
                                 onChange={(e) => {
                                     formik.handleChange(e);

@@ -176,7 +176,7 @@ const Registro = () => {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(https://images.pexels.com/photos/11799244/pexels-photo-11799244.jpeg)',
+            backgroundImage: 'url(https://images.ctfassets.net/1nvpgv2kdfc0/4gPp7qhQKTdwkTUdbKj0Ym/e4e9d48aec2e52b358ad02e9a4f36e43/civa.jpeg)',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
